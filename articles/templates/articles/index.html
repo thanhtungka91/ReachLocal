@@ -1,0 +1,9 @@
+{% if articles %}
+    <ul>
+    {% for article in articles %}
+        <li><a href="test">{{ article.url }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>no news.</p>
+{% endif %}
