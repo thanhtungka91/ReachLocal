@@ -4,7 +4,7 @@ from django.shortcuts import render
 from newsapi import NewsApiClient
 from .models import Article
 from .models import Source
-
+from decouple import config
 from django.http import HttpResponse
 
 #like the controller 
@@ -20,8 +20,8 @@ def index(request):
 
 def getArticles(request): 
     #get articles from api 
-
-    newsapi = NewsApiClient(api_key='')
+    NEWSAPIKEY = config('NEWSAPIKEY')
+    newsapi = NewsApiClient(api_key=NEWSAPIKEY)
     all_articles = newsapi.get_everything(q='bitcoin',
                                       sources='bbc-news,the-verge',
                                       domains='bbc.co.uk,techcrunch.com',
