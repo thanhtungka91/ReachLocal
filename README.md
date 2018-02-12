@@ -26,7 +26,7 @@ python manage.py runserver
 Then visit `http://127.0.0.1:8000/articles/` to see the page 
 
 ## Configuration
-# 1. Configue database 
+### 1. Configue database 
 This app is using sqlite3 for store the data 
 1. creat the migration sql  
 ```python manage.py makemigrations articles```
@@ -35,7 +35,7 @@ This app is using sqlite3 for store the data
 
 3. add newsapi to .env file 
 ```NEWSAPIKEY="xxxx"```
-# 2. crawler data 
+### 2. get data from news api 
 click on the tab at the top for crawl data 
 
 
