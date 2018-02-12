@@ -39,10 +39,10 @@
                             
                              <div class="col-md-3">
                                 <div class="card mb-3">
-                                    <img  style="height: 199px;" class="img-fluid" href ={{article.urlToImage}} src=" {% if article.urlToImage %} {{article.urlToImage}} {% endif %}" alt="{{article.heading}}">
+                                    <img  style="height: 199px;" class="img-fluid" href ={{article.url}} src=" {% if article.urlToImage %} {{article.urlToImage}} {% endif %}" alt="{{article.heading}}">
                                     <div class="card-body">
                                         <div class="news-title">
-                                            <h2 class=" title-small"><a href=>{{article.title}}</a></h2>
+                                            <h2 class=" title-small"><a href={{article.url}}>{{article.title}}</a></h2>
                                         </div>
                                         <p class="card-text">{{article.description|safe|truncatechars:100}}</p>
                                         <p class="card-text"><small class="text-time"><em>{{article.publishedAt|timesince}} ..ago </em></small></p>
