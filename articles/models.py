@@ -11,7 +11,7 @@ class Source(models.Model):
 
 class Article(models.Model):
     source = models.ForeignKey(Source, on_delete=models.CASCADE)
-    author = models.CharField(max_length=200)
+    author = models.CharField(max_length=200,null=True)
     title = models.CharField(max_length=200)
     description = models.CharField(max_length=200)
     url = models.CharField(max_length=200)
