@@ -6,11 +6,23 @@ from .models import Article
 from .models import Source
 from decouple import config
 from django.http import HttpResponse
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-#like the controller 
+
 def index(request):
     
-    articles = Article.objects.all()
+    articles_all = Article.objects.all().order_by("publishedAt")
+
+    paginator = Paginator(articles_all, 10)
+    page = request.GET.get('page')
+    
+    try:
+        articles = paginator.page(page)
+    except PageNotAnInteger:
+        articles = paginator.page(1)
+    except EmptyPage:
+        articles = paginator.page(paginator.num_pages)
+
     context = {
         'articles': articles,
     }
@@ -19,7 +31,6 @@ def index(request):
 
 
 def getArticles(request): 
-    #get articles from api 
     NEWSAPIKEY = config('NEWSAPIKEY')
     newsapi = NewsApiClient(api_key=NEWSAPIKEY)
     all_articles = newsapi.get_everything(q='bitcoin',
